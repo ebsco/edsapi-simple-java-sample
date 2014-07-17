@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>jDemo-IPAuth</display-name>
+	<servlet>
+		<servlet-name>initialServer</servlet-name>
+		<servlet-class>com.eds.servlets.initialServer</servlet-class>
+		<init-param>
+			<param-name>message_format</param-name>
+			<param-value>XML</param-value>
+			<!-- <param-value>JSON</param-value> -->
+		</init-param>
+		<init-param>
+			<param-name>endpoint</param-name>
+			<param-value>http://eds-api.ebscohost.com/edsapi/rest</param-value>
+		</init-param>
+		<init-param>
+			<param-name>profile</param-name>
+			<param-value>[your_profile]</param-value>
+		</init-param>
+		<init-param>
+			<param-name>is_guest</param-name>
+			<param-value>y</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>initialServer</servlet-name>
+		<url-pattern>/initialServer/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Search</servlet-name>
+		<servlet-class>com.eds.servlets.Search</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Search</servlet-name>
+		<url-pattern>/Search/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Retrieve</servlet-name>
+		<servlet-class>com.eds.servlets.Retrieve</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Retrieve</servlet-name>
+		<url-pattern>/Retrieve/*</url-pattern>
+	</servlet-mapping>
+	<jsp-config/>
+	<welcome-file-list>
+		<welcome-file>initialServer.html</welcome-file>
+		<welcome-file>initialServer.htm</welcome-file>
+		<welcome-file>initialServer.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<location>/error.jsp</location>
+	</error-page>
+</web-app>
